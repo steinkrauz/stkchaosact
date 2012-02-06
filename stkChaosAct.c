@@ -36,7 +36,7 @@ int main(int argv, char *argc[]){
        i++;
      }
      TotalCount += i;
-     if ((ChaosGate=fopen("/dev/nul","wt"))==NULL){ /*Opening the gates to chaos*/
+     if ((ChaosGate=fopen("/dev/null","wt"))==NULL){ /*Opening the gates to chaos*/
 	     perror("Gates won't open for you!"); return 11;
      }
      fwrite(ChaosBuf,ChaosBufLength,1,ChaosGate);  /* Dumping the victim into the Gates */
