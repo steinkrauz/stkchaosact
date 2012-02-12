@@ -35,6 +35,6 @@ int main(int argv, char *argc[]){
      eructateInChaos(ChaoticBuffer);
      disperseChaoticBuffer(ChaoticBuffer); /* Scatter the ashes */
   }
-  printf("%d bytes were devoured by CHAOS\n",TotalCount);
+  chaoticPrint("%d bytes were devoured by CHAOS\n",TotalCount);
   return 0;
 }
