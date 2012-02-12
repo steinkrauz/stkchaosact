@@ -15,13 +15,16 @@ To devour, destroy, devastate!
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
 #include "stkLibChaos.h"
 
+#define MAX_FORKS 16
 
 int main(int argv, char *argc[]){
-  int TotalCount;
+  int TotalCount, ForkCount;
   ChaoticChunk *ChaoticBuffer;
   FILE *input;
+  pid_t pid;
 
   srand(time(NULL)); /* seeding CHAOS in the first place */
   
@@ -32,6 +35,8 @@ int main(int argv, char *argc[]){
      ChaoticBuffer = summonChaoticBuffer();
      fgets(ChaoticBuffer->bytes,ChaoticBuffer->size,input);
      TotalCount += chaoticCorruption(ChaoticBuffer);
+     ForkCount = rand()%MAX_FORKS;
+     while(ForkCount-->0&&pid>0) pid = fork();/* will destroy it simultaneously */
      eructateInChaos(ChaoticBuffer);
      disperseChaoticBuffer(ChaoticBuffer); /* Scatter the ashes */
   }
