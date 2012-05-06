@@ -36,6 +36,7 @@ int main(int argv, char *argc[]){
   
   input = stdin;
   TotalCount = 0;
+
   
   while(!feof(input)){
      ChaoticBuffer = summonChaoticBuffer();
@@ -45,7 +46,9 @@ int main(int argv, char *argc[]){
      while(ForkCount-->0&&pid>0) pid = fork();/* will destroy it simultaneously */
      eructateInChaos(ChaoticBuffer);
      disperseChaoticBuffer(ChaoticBuffer); /* Scatter the ashes */
+     if (pid==0) break;
   }
-  chaoticPrint("%d bytes were devoured by CHAOS\n",TotalCount);
+  if (pid>0)
+     chaoticPrint("%d bytes were devoured by CHAOS\n",TotalCount);
   return 0;
 }
